@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换-闭包解决同步问题</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box{
+            width: 360px;
+            height: 70px;
+            margin: 0 auto;
+            margin-top: 100px;
+            background: url(images/01big.jpg) no-repeat ;
+            /* background-color: red; */
+            /* 大盒子本身宽度只有70.将padding-top设置为360.把ul挤下去 */
+            padding-top: 360px;
+            border: 1px solid #aaa7a7;
+            
+        }
+
+        ul{
+            display: flex;
+            margin-bottom: 0;
+        }
+
+        li{
+        flex: 1;
+        border: 1px solid #aaa7a7;
+        cursor: pointer;   
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="sbox">
+            <ul>
+                <li id="every01"><img src="images/01.jpg" alt=""></li>
+                <li id="every02"><img src="images/02.jpg" alt=""></li>
+                <li id="every03"><img src="images/03.jpg" alt=""></li>
+                <li id="every04"><img src="images/04.jpg" alt=""></li>
+                <li id="every05"><img src="images/05.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+       var box = document.getElementById('box');
+       var lis = document.getElementsByTagName('li');
+
+       for(var i = 0; i < lis.length;i++){
+            lis[i].index = i + 1;
+            lis[i].onmousemove = function () {
+            box.style.background = "url(images/0" + this.index + "big.jpg) no-repeat"
+           }
+
+        //     用变量储存也可以
+        //     var sli = lis[i];
+        //     sli.index = i + 1;
+        //     sli.onmousemove = function () {
+        //     box.style.background = "url(images/0" + this.index + "big.jpg) no-repeat"
+        //    }
+       }
+    </script>
+</body>
+</html>

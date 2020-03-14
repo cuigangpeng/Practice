@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码隐藏显示-利用冒泡</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    #icon{
+        width: 52px;
+        height: 52px;
+        margin-top: 400px;
+        background-color: red;
+        background: url("images/e_coder_normal.png") no-repeat;
+    }
+
+    #ecode{
+      width: 52px;
+      position: relative;
+      top: 170px;
+      background-color: green;
+    }
+
+    #secode{
+       margin-left: 50px;
+       display: none;
+       background-color: green;
+       position: relative;
+       bottom: 100px;
+    }
+</style>
+<body>
+    <!-- 利用冒泡事件
+    因为icon和secode同属于一个盒子，
+    所以当鼠标退出icon，并进入还未隐藏的secode时，secode并不会隐藏 -->
+    <div id="icon">
+        <div id="secode">
+            <img src="images/e_coder.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var ecode = document.getElementById('ecode');
+        var secode = document.getElementById('secode');
+        var icon = document.getElementById('icon');
+
+        icon.onmouseover = function (event) {
+            secode.style.display = "block";
+            
+        }
+        icon.onmouseout = function () {
+            secode.style.display = "none";
+        //     this.getElementsByTagName('img')[0].src = "images/e_coder_normal.png";
+        }
+    </script>
+</body>
+</html>
