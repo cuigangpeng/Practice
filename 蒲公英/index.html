@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒲公英</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    #box{
+        width: 500px;
+        height: auto;
+        margin: 0 auto;
+        /* background-color: red; */
+        border: 1px solid rgb(167, 165, 165);
+        margin-top: 100px;
+    }
+
+    #box img{
+        width: 100%;
+    }
+
+    .nav ul{
+        display: flex;
+        justify-content: space-around;
+        
+    }
+
+    .nav ul li{
+        width: 90px;
+        float: left;
+        border: 1px solid rgb(167, 165, 165);
+    }
+
+    .nav ul li>img{
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="box">
+        <div class="main" onmouseover= "stop()" onmouseout="start()">
+            <img src="img/1.jpg" alt="">
+        </div>
+        <div class="nav">
+            <ul>
+                <li><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var li = document.getElementsByTagName('li');
+        var main = document.getElementsByClassName('main')[0];
+        var mainImg = main.getElementsByTagName('img')[0];
+        for(i = 0;i < li.length;i++){ 
+            var allLi = li[i]
+            
+            allLi.onclick = function () {
+                // mainImg.src = this.getElementsByTagName('img')[0].src;
+                mainImg.setAttribute('src',this.getElementsByTagName('img')[0].src);
+                clearInterval(mt);
+                clearInterval(mt1);        
+           }
+        }
+
+        var img = document.getElementsByTagName('img')[0];
+        var j = 1, max = 5,min = 1;
+        function t() {
+            if(j > max){
+            j = min;
+            img.src = "img/" + j +".jpg";
+        }else{
+            img.src = "img/" + j +".jpg";
+        }
+        j++;
+        }
+        var mt = setInterval(t,300);//设置2个定时器，一边鼠标进入和移出时停止和开始定时器
+        var mt1 = setInterval(t,300);
+       function stop() {              //清除定时器
+            clearInterval(mt);
+            clearInterval(mt1);
+        }
+        function start() {           //鼠标移出，回复定时器
+            mt = setInterval(t,300);
+            mt1 = setInterval(t,300);
+        }
+     </script>
+</body>
+</html>

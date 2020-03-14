@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        width: fit-content;
+        margin: 0 auto;
+        position: relative;
+        /* background-color: green; */
+        top: 200px;
+    }
+
+    .close{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        background-color: red;
+    }
+
+    .close img{
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+</style>
+<body>
+    <div id="box">
+        <img src="img/pic02.jpg" alt="">
+        <div class="close">
+            <img src="img/close.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var close = document.getElementsByClassName('close')[0];
+        var box = document.getElementById('box');
+        close.onclick = function () {
+            this.parentNode.remove();
+        } ;
+        
+        
+    </script>
+</body>
+</html>
