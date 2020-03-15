@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选-取消选中-反选</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0; 
+            list-style: none;
+        }
+        #box{
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            margin-top: 100px;
+            box-shadow: 0px 0px 14px #747272;
+        }
+        #header{
+            text-align: center;
+            color: #8a8888;
+        }
+        #main{
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            /* background-color: green; */
+            padding: 20px;
+            border-bottom: 1px solid #b6b6b6;
+            border-top: 1px solid #b6b6b6;
+        }
+        #main label{
+           line-height: 20px;
+        }
+        #footer{
+            display: inline-block;
+            width: 200px;
+            height: 20px;
+            margin-top: 10px;
+            margin-left: 20px;
+            text-align: center;  
+        }
+        #footer button{ 
+            margin-left: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <section id="header">
+            <h1>歌曲排行榜</h1>
+        </section>
+        <section id="main">
+            <label for=""><input type="checkbox"></label>1.风继续吹<br>
+            <label for=""><input type="checkbox"></label>2.倩女幽魂<br>
+            <label for=""><input type="checkbox"></label>3.当年情<br>
+            <label for=""><input type="checkbox"></label>4.午后红茶<br>
+            <label for=""><input type="checkbox"></label>5.Monica<br>
+            <label for=""><input type="checkbox"></label>6.海阔天空<br>
+            <label for=""><input type="checkbox"></label>7.光辉岁月<br>
+            <label for=""><input type="checkbox"></label>8.真的爱你<br>
+            <label for=""><input type="checkbox"></label>9.老街<br>
+        </section>
+        <section id="footer">
+            <button id="all">全选</button>
+            <button id="cancel">取消选中</button>
+            <button id="reverse">反选</button>
+        </section>
+    </div>
+    <script>
+        var inputs = document.getElementsByTagName('input');
+        var all = $("all");
+        var cancel = $("cancel");
+        var reverse = $("reverse");
+
+        all.addEventListener('click',function (ev) {
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                input.checked = true;
+            }
+        })
+
+        cancel.addEventListener('click',function (ev) {
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                input.checked = false;
+            }
+        })
+
+        reverse.addEventListener('click',function (ev) {
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                input.checked = !input.checked; //让反选后的状态等于当前的状态，再将当前的额状态取反
+            }
+        })
+
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+        }
+    </script>
+</body>
+</html>

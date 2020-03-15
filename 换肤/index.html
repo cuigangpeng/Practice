@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换肤</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        background: url("images/1.jpg") no-repeat;
+        background-size: cover;
+    }
+    #box{
+        width: 100%;
+        height: 120px;
+        /* background-color: #71d2f0; */
+       
+    }
+
+    ul{
+        width: 100%;
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: green; */
+    }
+
+    /* li{
+        flex: 1;
+    } */
+
+    li img{
+        width: 200px;
+        height: 120px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="box">
+        <ul>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        var allLis = box.getElementsByTagName('li');
+        // var body = document.getElementsByTagName('body');//错误的拿法    
+        for(var i = 0;i < allLis.length;i++){
+            var sli = allLis[i];
+            
+            //绑定属性实现
+            /* sli.index = i + 1;  
+            sli.onclick = function () {
+            document.body.style.background = 'url("images/' + this.index + '.jpg") no-repeat'//记得加上this
+            } */
+
+            //闭包实现
+            (function (index) {
+                sli.onclick = function () {
+                document.body.style.background = 'url("images/' + index + '.jpg") no-repeat'//记得加上this
+                }
+            })(i + 1)
+        }
+    </script>
+</body>
+</html>

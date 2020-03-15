@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#box{
+    width: 500px;
+    height:160px;
+    margin: 0 auto;
+    margin-top: 200px;
+    border: 1px solid rgb(229, 226, 226);
+}
+
+.header{
+    width: 500px;
+    height: 40px;
+}
+
+.header ul{
+    height: 40px;/* 使用flex前要给高度 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(229, 226, 226);
+
+}
+.header li{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: rgb(136, 132, 132);
+}
+
+.header li:hover{
+    color: rgb(221, 119, 36);
+    cursor: pointer;
+    font-size: 20px;
+}
+.header .selected{
+   background-color: #fff;
+}
+
+.content .body ul{
+    width: 100%;
+    height: 120px;
+}
+
+.content .body ul li{
+    width: 250px;
+    height: 60px;
+    float: left;
+    line-height: 60px;
+    text-align: center;
+}
+
+.content .body ul li:hover{
+    color: rgb(221, 119, 36);
+    font-size: 17px;
+    cursor: pointer;
+}
