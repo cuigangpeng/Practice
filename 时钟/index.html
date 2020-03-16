@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    #box{
+        background: url('images/clock.jpg');
+        width: 600px;
+        height: 600px;
+        margin: 50px auto;
+        position: relative;
+    }
+
+    #hour,#min,#sec{
+        width: 30px;
+        height: 600px;
+        position: absolute;
+        left: 50%;
+        margin-left: -15px;
+    }
+
+    #hour{
+        background: url('images/hour.png');
+    }
+
+    #min{
+        background: url('images/minute.png');
+    }
+
+    #sec{
+        background: url('images/second.png');
+    }
+</style>
+<body>
+    <div id="box">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+    </div>
+
+    <script>
+        var hour = $('hour');
+        var min = $('min');
+        var sec = $('sec');
+
+        setInterval(function () {
+            var date = new Date();
+            var mills = date.getMilliseconds();
+            var s = date.getSeconds() + mills/1000;
+            var m = date.getMinutes() + s/60;
+            var h = date.getHours() + m/60;
+            hour.style.transform = "rotate(" + h*30 + "deg)";
+            min.style.transform = "rotate(" + m*6+ "deg)";
+            sec.style.transform = "rotate(" + s*6 + "deg)";        //旋转    
+            
+        },100)
+
+         function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+        }
+    </script>
+</body>
+</html>

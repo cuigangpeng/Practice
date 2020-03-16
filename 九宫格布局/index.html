@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宫格布局</title>
+
+    <style>
+        #box1{
+           margin-left: 400px;
+        }
+        button{
+            cursor: pointer;
+        }
+
+        #grid{
+            position: relative;
+            left: 200px;
+            top: 20px;
+        }
+
+        #grid p{
+            line-height: 8px;
+            margin-top: 8px;
+        }
+        #img{
+            width: 220px;
+            height: 360px;
+        }
+
+        #sp{
+            font-size: 14px;
+            color: #a7a4a4;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <button id="btn1">3列</button>
+        <button id="btn2">4列</button>
+        <button id="btn3"> 5列</button>
+    </div>
+    <div id="grid">
+        <div id="img"><img src="image/1.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/2.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/3.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/4.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/5.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/6.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/7.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/8.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/9.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/10.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/11.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/12.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/13.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/14.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+        <div id="img"><img src="image/15.jpg" alt=""><p>因为遇见你</p><p id="sp">孙怡邓伦牵手演绎刺绣奇缘</p></div>
+    </div>
+
+    <script>
+        $('btn1').onclick = function () {
+            nice(3,$('grid'));
+        }
+
+        $('btn2').onclick = function () {
+            nice(4,$('grid'));
+        }
+        
+        $('btn3').onclick = function () {
+            nice(5,$('grid'));
+        }
+
+        function nice (cols,parentNode) {
+            for (var i = 0; i < parentNode.children.length; i++){
+                var boxW = 220,boxH = 360,marginXY = 20;
+                var row = Math.floor(i/cols);
+                var col = Math.floor(i%cols);
+                var theBox = parentNode.children[i];
+                theBox.style.position = "absolute";
+                theBox.style.left = col*(boxW + marginXY) + "px";
+                theBox.style.top = row*(boxH + marginXY) + "px";
+            }
+        }
+
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+        }
+    </script>
+</body>
+</html>

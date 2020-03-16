@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表评论</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box{
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: 1px solid rgb(187, 186, 186);
+            padding-top: 30px;
+           
+        }
+
+        .enter{
+            width: 560px;
+            height: 100px;
+            margin-top: 100px;
+            margin: 100px auto 0px auto;
+        }
+
+        .lis{
+            width: 540px;
+            height: 200px;
+            margin: 0px auto 0px auto;
+            overflow: scroll;
+            
+        }
+
+        .lis ul{
+            line-height: 30px;
+        }
+
+        .lis ul li{
+            border-bottom: 1px solid rgb(199, 198, 198);
+            width: 522px;
+            
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .lis ul li>a{
+            text-decoration: none;
+            color: red;
+            margin-right: 20px;
+            display: block;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="lis">
+            <ul id="ul">
+                <li>评论区都是人才<a href="#">删除</a></li>
+                <li>笑死人不偿命<a href="#">删除</a></li>
+                <li>哈哈哈哈<a href="#">删除</a></li>
+            </ul>
+        </div>
+        <div class="enter">
+            <label>发表评论</label>
+            <textarea name="input" id="myEnter" cols="60" rows="4"></textarea>
+            <button id="btn">发表</button>
+        </div>
+    </div>
+
+    <script>
+        
+        var btn = $('btn');
+        btn.onclick = function () {
+            var content = $('myEnter').value; //需要在函数里给变量赋值
+            if (content.length === 0 ) {
+               alert('请输入评论内容~~~');
+               return;
+            }
+
+            var li = document.createElement('li');
+            li.innerHTML = content + '<a href="javrcriptS:;">删除</a>';
+            $('ul').insertBefore(li,$('ul').children[0]);
+            $('myEnter').value = "";
+
+            var cancel = $('ul').getElementsByTagName('a');
+                for (var i = 0; i < cancel.length; i++) {
+                var scancel = cancel[i];
+                scancel.onclick = function () {
+                this.parentNode.remove();
+                }
+            }
+        }
+
+        var cancel = $('ul').getElementsByTagName('a');
+            for (var i = 0; i < cancel.length; i++) {
+            var scancel = cancel[i];
+            scancel.onclick = function () {
+            this.parentNode.remove();
+            }
+        }
+        
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+        }
+    </script>
+</body>
+</html>
